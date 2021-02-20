@@ -14,10 +14,10 @@ func InsertUser(u models.User) (string, bool, error) {
 	defer cancel() // downs the WithTime in the context
 
 	db := MongoConection.Database("cardinal")
-	col := db.Collection("users")
+	users := db.Collection("users")
 
 	u.Password, _ = EncryptPassword(u.Password)
-	result, err := col.InsertOne(ctx, u)
+	result, err := users.InsertOne(ctx, u)
 
 	if err != nil {
 		return "", false, err

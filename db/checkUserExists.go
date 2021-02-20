@@ -14,12 +14,12 @@ func CheckUserExists(email string) (models.User, bool, string) {
 	defer cancel()
 
 	db := MongoConection.Database("cardinal")
-	col := db.Collection("users")
+	users := db.Collection("users")
 
 	condition := bson.M{"email": email}
 	var result models.User
 
-	err := col.FindOne(ctx, condition).Decode(&result)
+	err := users.FindOne(ctx, condition).Decode(&result)
 	ID := result.ID.Hex()
 	if err != nil {
 		return result, false, ID
