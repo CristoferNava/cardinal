@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/CristoferNava/cardinal/db"
+	"github.com/CristoferNava/cardinal/jwt"
 	"github.com/CristoferNava/cardinal/models"
-	"github.com/CristoferNava/jwt"
 )
 
 // Login handles the frontend request for the login
@@ -27,7 +27,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	user, found := db.TryLogin(t.Email, t.Password)
 	if found == false {
-		http.Error(w, "User or password incorrect")
+		http.Error(w, "User or password incorrect", 400)
 		return
 	}
 
