@@ -24,7 +24,7 @@ func SearchProfile(ID string) (models.User, error) {
 	condition := bson.M{"_id": objID}
 
 	err := users.FindOne(ctx, condition).Decode(&profile)
-
+	profile.Password = ""
 	if err != nil {
 		fmt.Println("User not found " + err.Error())
 	}
