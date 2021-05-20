@@ -8,7 +8,7 @@ import (
 
 // User is the model for the User collection in the DB
 type User struct {
-	ID        primitive.ObjectID `bson:"_id,omitempty" json:"id,omitempty"`
+	ID        primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	Name      string             `bson:"name,omitempty" json:"name,omitempty"`
 	LastName  string             `bson:"lastName,omitempty" json:"lastName,omitempty"`
 	Birthdate time.Time          `bson:"birthdate" json:"birthdate"`
