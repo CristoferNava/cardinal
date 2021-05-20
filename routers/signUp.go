@@ -40,7 +40,7 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if insertStatus == false {
+	if !insertStatus {
 		http.Error(w, "Problem with Mongo while trying to create the user", 500)
 	}
 

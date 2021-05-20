@@ -14,10 +14,9 @@ import (
 
 // Handle sets the PORT, the Handler with cors and Listen and Serve
 func Handle() {
-	log.Println("mensaje pruebas")
 	router := mux.NewRouter()
 
-	router.HandleFunc("sign-up/", middlewares.CheckDB(routers.SignUp)).Methods("POST")
+	router.HandleFunc("/sign-up", middlewares.CheckDB(routers.SignUp)).Methods("POST")
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
