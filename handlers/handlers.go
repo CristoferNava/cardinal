@@ -8,7 +8,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 
-	"github.com/CristoferNava/cardinal/middlewares"
+	mw "github.com/CristoferNava/cardinal/middlewares"
 	"github.com/CristoferNava/cardinal/routers"
 )
 
@@ -16,8 +16,9 @@ import (
 func Handle() {
 	router := mux.NewRouter()
 
-	router.HandleFunc("/sign-up", middlewares.CheckDB(routers.SignUp)).Methods("POST")
-	router.HandleFunc("/log-in", middlewares.CheckDB(routers.LogIn)).Methods("POST")
+	router.HandleFunc("/sign-up", mw.CheckDB(routers.SignUp)).Methods("POST")
+	router.HandleFunc("/log-in", mw.CheckDB(routers.LogIn)).Methods("POST")
+	router.HandleFunc("/show-profile", mw.CheckDB(mw.ValidateJWT(routers.ShowProfile))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
