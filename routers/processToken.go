@@ -17,7 +17,7 @@ var IDUser string
 
 // ProcessToken given a token validates if is correct or not
 func ProcessToken(tokenToValidate string) (*models.Claim, bool, string, error) {
-	privateKey := []byte("laMayonesNoEsUnInstrumento")
+	privateKey := []byte("laMayonesaNoEsUnInstrumento")
 	claims := &models.Claim{}
 
 	splittedToken := strings.Split(tokenToValidate, "Bearer")
