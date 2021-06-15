@@ -22,7 +22,7 @@ func ProcessToken(tokenToValidate string) (*models.Claim, bool, string, error) {
 
 	splittedToken := strings.Split(tokenToValidate, "Bearer")
 	if len(splittedToken) != 2 {
-		return claims, false, "", errors.New("Invalid Token format")
+		return claims, false, "", errors.New("invalid Token format")
 	}
 
 	tokenToValidate = strings.TrimSpace(splittedToken[1])
@@ -31,7 +31,7 @@ func ProcessToken(tokenToValidate string) (*models.Claim, bool, string, error) {
 	}) // validate the token and save the data in the claims struct
 	if err != nil {
 		if !validatedToken.Valid {
-			return claims, false, "", errors.New("Invalid Token")
+			return claims, false, "", errors.New("invalid Token")
 		}
 		return claims, false, "", err
 	}
