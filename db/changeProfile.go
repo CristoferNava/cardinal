@@ -18,25 +18,26 @@ func ChangeProfile(user models.User, ID string) (bool, error) {
 	users := db.Collection("users")
 
 	// check for the fields that have been updated
+	// the keys follows the format used in the model.User `bson:"lastName"`
 	record := make(map[string]interface{})
 	if len(user.Name) > 0 {
-		record["Name"] = user.Name
+		record["name"] = user.Name
 	}
 	if len(user.LastName) > 0 {
-		record["LastName"] = user.LastName
+		record["lastName"] = user.LastName
 	}
 	if len(user.Banner) > 0 {
-		record["Banner"] = user.Banner
+		record["banner"] = user.Banner
 	}
-	record["Birthdate"] = user.Birthdate
+	record["birthdate"] = user.Birthdate
 	if len(user.Bio) > 0 {
-		record["Bio"] = user.Bio
+		record["bio"] = user.Bio
 	}
 	if len(user.Location) > 0 {
-		record["Location"] = user.Location
+		record["location"] = user.Location
 	}
 	if len(user.Website) > 0 {
-		record["Website"] = user.Website
+		record["website"] = user.Website
 	}
 
 	// update the user in the database
