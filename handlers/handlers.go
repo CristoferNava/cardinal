@@ -30,6 +30,8 @@ func Handle() {
 	router.HandleFunc("/upload-banner", mw.CheckDB(mw.ValidateJWT(routers.UploadBanner))).Methods("POST")
 	router.HandleFunc("/serve-banner", mw.CheckDB(routers.ServeBanner)).Methods("GET")
 
+	router.HandleFunc("/create-relation", mw.CheckDB(mw.ValidateJWT(routers.CreateRelation))).Methods("POST")
+
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
