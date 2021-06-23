@@ -26,6 +26,9 @@ func ChangeProfile(user models.User, ID string) (bool, error) {
 	if len(user.LastName) > 0 {
 		record["lastName"] = user.LastName
 	}
+	if len(user.Avatar) > 0 {
+		record["avatar"] = user.Avatar
+	}
 	if len(user.Banner) > 0 {
 		record["banner"] = user.Banner
 	}
