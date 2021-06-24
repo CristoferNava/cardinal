@@ -31,7 +31,8 @@ func Handle() {
 	router.HandleFunc("/serve-banner", mw.CheckDB(routers.ServeBanner)).Methods("GET")
 
 	router.HandleFunc("/create-relation", mw.CheckDB(mw.ValidateJWT(routers.CreateRelation))).Methods("POST")
-	router.HandleFunc("/remove-relation", mw.CheckDB(mw.ValidateJWT(routers.RemoveRelation))).Methods("POST")
+	router.HandleFunc("/remove-relation", mw.CheckDB(mw.ValidateJWT(routers.RemoveRelation))).Methods("DELETE")
+	router.HandleFunc("/check-relation", mw.CheckDB(mw.ValidateJWT(routers.CheckRelation))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
