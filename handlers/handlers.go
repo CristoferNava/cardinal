@@ -35,6 +35,7 @@ func Handle() {
 	router.HandleFunc("/check-relation", mw.CheckDB(mw.ValidateJWT(routers.CheckRelation))).Methods("GET")
 
 	router.HandleFunc("/search-users", mw.CheckDB(mw.ValidateJWT(routers.SearchUsers))).Methods("GET")
+	router.HandleFunc("/get-tweets", mw.CheckDB(mw.ValidateJWT(routers.GetTweetsFollowing))).Methods("GET")
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
