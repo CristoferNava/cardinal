@@ -71,7 +71,6 @@ func SearchUsers(userID, search, kind string, page int64) ([]*models.User, bool)
 	err = cursor.Err()
 	if err != nil {
 		log.Println(err.Error())
-		log.Println("Valió madres :'v")
 		return results, false
 	}
 	cursor.Close(ctx)
